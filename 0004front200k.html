@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Ahmad & Siti</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fef9f3 0%, #fdf6ed 50%, #fefaf5 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Floral Pattern Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23d4a5a5' fill-opacity='0.08'%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='70' cy='10' r='2'/%3E%3Ccircle cx='10' cy='70' r='2'/%3E%3Ccircle cx='70' cy='70' r='2'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Floating Petals */
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            font-size: 20px;
+            animation: fall 15s linear infinite;
+            opacity: 0.7;
+        }
+
+        .petal:nth-child(1) {
+            left: 5%;
+            animation-delay: 0s;
+            animation-duration: 12s;
+        }
+
+        .petal:nth-child(2) {
+            left: 15%;
+            animation-delay: 2s;
+            animation-duration: 14s;
+        }
+
+        .petal:nth-child(3) {
+            left: 25%;
+            animation-delay: 4s;
+            animation-duration: 11s;
+        }
+
+        .petal:nth-child(4) {
+            left: 35%;
+            animation-delay: 1s;
+            animation-duration: 16s;
+        }
+
+        .petal:nth-child(5) {
+            left: 45%;
+            animation-delay: 3s;
+            animation-duration: 13s;
+        }
+
+        .petal:nth-child(6) {
+            left: 55%;
+            animation-delay: 5s;
+            animation-duration: 15s;
+        }
+
+        .petal:nth-child(7) {
+            left: 65%;
+            animation-delay: 2.5s;
+            animation-duration: 12s;
+        }
+
+        .petal:nth-child(8) {
+            left: 75%;
+            animation-delay: 4.5s;
+            animation-duration: 14s;
+        }
+
+        .petal:nth-child(9) {
+            left: 85%;
+            animation-delay: 1.5s;
+            animation-duration: 11s;
+        }
+
+        .petal:nth-child(10) {
+            left: 92%;
+            animation-delay: 3.5s;
+            animation-duration: 16s;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            90% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Corner Floral Decorations */
+        .floral-corner {
+            position: fixed;
+            width: 180px;
+            height: 180px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .floral-corner.top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .floral-corner.top-right {
+            top: 0;
+            right: 0;
+            transform: scaleX(-1);
+        }
+
+        .floral-corner.bottom-left {
+            bottom: 0;
+            left: 0;
+            transform: scaleY(-1);
+        }
+
+        .floral-corner.bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: scale(-1);
+        }
+
+        .floral-corner svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Main Container */
+        .cover-container {
+            text-align: center;
+            z-index: 10;
+            padding: 40px 20px;
+            max-width: 480px;
+        }
+
+        /* Romantic Floral Frame */
+        .frame {
+            padding: 55px 35px;
+            border-radius: 30px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.95) 0%,
+                    rgba(254, 250, 245, 0.98) 50%,
+                    rgba(255, 253, 250, 0.95) 100%);
+            backdrop-filter: blur(15px);
+            box-shadow:
+                0 25px 70px rgba(180, 130, 130, 0.15),
+                0 10px 30px rgba(212, 165, 165, 0.1),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+            position: relative;
+            border: 2px solid rgba(212, 165, 165, 0.25);
+        }
+
+        /* Decorative Floral Border */
+        .frame::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 1px solid rgba(180, 130, 130, 0.2);
+            border-radius: 22px;
+            pointer-events: none;
+        }
+
+        .frame::after {
+            content: '❀';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #d4a5a5;
+            animation: bloomPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes bloomPulse {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        /* Top Floral Ornament */
+        .top-ornament {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            filter: drop-shadow(0 3px 10px rgba(180, 130, 130, 0.3));
+        }
+
+        /* Announcement Text */
+        .announcement {
+            color: #b48282;
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            animation: fadeInDown 0.8s ease forwards;
+            opacity: 0;
+            font-weight: 500;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Flower Bouquet Container */
+        .bouquet-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 25px auto;
+            cursor: pointer;
+            animation: fadeIn 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .bouquet {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flower-ring {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 2px solid rgba(212, 165, 165, 0.4);
+            border-radius: 50%;
+            animation: ringRotate 15s linear infinite;
+        }
+
+        .flower-ring::before {
+            content: '✿';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 22px;
+            color: #e8b4b4;
+        }
+
+        .flower-ring::after {
+            content: '✿';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(180deg);
+            font-size: 22px;
+            color: #e8b4b4;
+        }
+
+        @keyframes ringRotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .main-flower {
+            font-size: 65px;
+            animation: flowerSway 3s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(180, 130, 130, 0.3));
+        }
+
+        @keyframes flowerSway {
+
+            0%,
+            100% {
+                transform: rotate(-3deg);
+            }
+
+            50% {
+                transform: rotate(3deg);
+            }
+        }
+
+        .bouquet-container:hover .main-flower {
+            animation: flowerBloom 0.5s ease forwards;
+        }
+
+        @keyframes flowerBloom {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Side Flowers */
+        .side-flower {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0.8;
+        }
+
+        .side-flower.left {
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-25deg);
+            animation: sideBloom 2s ease-in-out infinite;
+        }
+
+        .side-flower.right {
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%) rotate(25deg);
+            animation: sideBloom 2s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes sideBloom {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: translateY(-50%) rotate(-25deg) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-50%) rotate(-25deg) scale(1.1);
+            }
+        }
+
+        .side-flower.right {
+            animation-name: sideBloomRight;
+        }
+
+        @keyframes sideBloomRight {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: translateY(-50%) rotate(25deg) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-50%) rotate(25deg) scale(1.1);
+            }
+        }
+
+        /* Couple Names */
+        .couple-names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 52px;
+            font-weight: 600;
+            color: #8b5a5a;
+            margin: 25px 0 15px;
+            text-shadow: 0 2px 10px rgba(139, 90, 90, 0.15);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .couple-names span {
+            color: #d4a5a5;
+            font-size: 36px;
+            font-weight: 400;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Wedding Date */
+        .wedding-date {
+            color: #a07070;
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-style: italic;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+            opacity: 0;
+            letter-spacing: 1px;
+        }
+
+        /* Guest Section */
+        .guest-section {
+            margin: 25px 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .guest-label {
+            color: #b48282;
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .guest-name {
+            color: #8b5a5a;
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            font-weight: 500;
+        }
+
+        /* Divider */
+        .divider {
+            width: 140px;
+            height: 30px;
+            margin: 25px auto;
+            position: relative;
+            animation: fadeIn 0.8s ease 0.7s forwards;
+            opacity: 0;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4a5a5, transparent);
+        }
+
+        .divider::after {
+            content: '❁';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fffdfb;
+            padding: 0 15px;
+            color: #d4a5a5;
+            font-size: 16px;
+        }
+
+        /* Open Button */
+        .open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 45px;
+            background: linear-gradient(135deg, #d4a5a5 0%, #c49292 50%, #b48282 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.4s ease;
+            box-shadow:
+                0 10px 30px rgba(180, 130, 130, 0.3),
+                0 5px 15px rgba(212, 165, 165, 0.2);
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        .open-btn:hover {
+            background: linear-gradient(135deg, #e8b4b4 0%, #d4a5a5 50%, #c49292 100%);
+            transform: translateY(-4px);
+            box-shadow:
+                0 15px 40px rgba(180, 130, 130, 0.35),
+                0 8px 20px rgba(212, 165, 165, 0.25);
+        }
+
+        .open-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .frame {
+                padding: 45px 25px;
+                margin: 15px;
+            }
+
+            .couple-names {
+                font-size: 42px;
+            }
+
+            .couple-names span {
+                font-size: 28px;
+            }
+
+            .open-btn {
+                padding: 14px 35px;
+                font-size: 11px;
+            }
+
+            .bouquet-container {
+                width: 130px;
+                height: 130px;
+            }
+
+            .main-flower {
+                font-size: 55px;
+            }
+
+            .floral-corner {
+                width: 120px;
+                height: 120px;
+            }
+
+            .top-ornament {
+                font-size: 40px;
+                top: -28px;
+            }
+        }
+
+        /* Page Transition */
+        .cover-container.hide {
+            animation: fadeOut 0.7s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(1.03);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Petals -->
+    <div class="petals">
+        <div class="petal">🌸</div>
+        <div class="petal">🌺</div>
+        <div class="petal">🌷</div>
+        <div class="petal">🌸</div>
+        <div class="petal">💮</div>
+        <div class="petal">🌺</div>
+        <div class="petal">🌷</div>
+        <div class="petal">🌸</div>
+        <div class="petal">💮</div>
+        <div class="petal">🌺</div>
+    </div>
+
+    <!-- Corner Floral Decorations -->
+    <div class="floral-corner top-left">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M0 0 C30 0, 50 20, 50 50 C50 20, 70 0, 100 0 L100 -50 L-50 -50 L-50 100 L0 100 C0 70, 20 50, 50 50 C20 50, 0 30, 0 0"
+                fill="url(#floralGrad)" opacity="0.15" />
+            <circle cx="15" cy="15" r="8" fill="#d4a5a5" opacity="0.3" />
+            <circle cx="35" cy="8" r="5" fill="#e8b4b4" opacity="0.25" />
+            <circle cx="8" cy="35" r="5" fill="#e8b4b4" opacity="0.25" />
+            <circle cx="25" cy="25" r="4" fill="#c49292" opacity="0.2" />
+            <defs>
+                <linearGradient id="floralGrad" x1="0" y1="0" x2="100" y2="100">
+                    <stop offset="0%" stop-color="#d4a5a5" />
+                    <stop offset="100%" stop-color="#e8b4b4" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <div class="floral-corner top-right">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M0 0 C30 0, 50 20, 50 50 C50 20, 70 0, 100 0 L100 -50 L-50 -50 L-50 100 L0 100 C0 70, 20 50, 50 50 C20 50, 0 30, 0 0"
+                fill="url(#floralGrad2)" opacity="0.15" />
+            <circle cx="15" cy="15" r="8" fill="#d4a5a5" opacity="0.3" />
+            <circle cx="35" cy="8" r="5" fill="#e8b4b4" opacity="0.25" />
+            <circle cx="8" cy="35" r="5" fill="#e8b4b4" opacity="0.25" />
+            <circle cx="25" cy="25" r="4" fill="#c49292" opacity="0.2" />
+            <defs>
+                <linearGradient id="floralGrad2" x1="0" y1="0" x2="100" y2="100">
+                    <stop offset="0%" stop-color="#d4a5a5" />
+                    <stop offset="100%" stop-color="#e8b4b4" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <div class="floral-corner bottom-left">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M0 0 C30 0, 50 20, 50 50 C50 20, 70 0, 100 0 L100 -50 L-50 -50 L-50 100 L0 100 C0 70, 20 50, 50 50 C20 50, 0 30, 0 0"
+                fill="url(#floralGrad3)" opacity="0.15" />
+            <circle cx="15" cy="15" r="8" fill="#d4a5a5" opacity="0.3" />
+            <circle cx="35" cy="8" r="5" fill="#e8b4b4" opacity="0.25" />
+            <circle cx="8" cy="35" r="5" fill="#e8b4b4" opacity="0.25" />
+            <circle cx="25" cy="25" r="4" fill="#c49292" opacity="0.2" />
+            <defs>
+                <linearGradient id="floralGrad3" x1="0" y1="0" x2="100" y2="100">
+                    <stop offset="0%" stop-color="#d4a5a5" />
+                    <stop offset="100%" stop-color="#e8b4b4" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <div class="floral-corner bottom-right">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M0 0 C30 0, 50 20, 50 50 C50 20, 70 0, 100 0 L100 -50 L-50 -50 L-50 100 L0 100 C0 70, 20 50, 50 50 C20 50, 0 30, 0 0"
+                fill="url(#floralGrad4)" opacity="0.15" />
+            <circle cx="15" cy="15" r="8" fill="#d4a5a5" opacity="0.3" />
+            <circle cx="35" cy="8" r="5" fill="#e8b4b4" opacity="0.25" />
+            <circle cx="8" cy="35" r="5" fill="#e8b4b4" opacity="0.25" />
+            <circle cx="25" cy="25" r="4" fill="#c49292" opacity="0.2" />
+            <defs>
+                <linearGradient id="floralGrad4" x1="0" y1="0" x2="100" y2="100">
+                    <stop offset="0%" stop-color="#d4a5a5" />
+                    <stop offset="100%" stop-color="#e8b4b4" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Main Content -->
+    <div class="cover-container" id="coverContainer">
+        <div class="frame">
+            <!-- Top Ornament -->
+            <div class="top-ornament">💐</div>
+
+            <p class="announcement">The Wedding Of</p>
+
+            <!-- Flower Bouquet -->
+            <div class="bouquet-container" onclick="openInvitation()">
+                <div class="bouquet">
+                    <div class="flower-ring"></div>
+                    <span class="side-flower left">🌷</span>
+                    <span class="main-flower">💐</span>
+                    <span class="side-flower right">🌷</span>
+                </div>
+            </div>
+
+            <!-- Couple Names -->
+            <h1 class="couple-names">
+                Ahmad <span>&</span> Siti
+            </h1>
+
+            <!-- Guest Section -->
+            <div class="guest-section">
+                <p class="guest-label">Kepada Yth.</p>
+                <p class="guest-name">Bapak/Ibu/Saudara/i</p>
+            </div>
+
+            <p class="wedding-date">Sabtu, 15 Februari 2025</p>
+
+            <div class="divider"></div>
+
+            <!-- Open Button -->
+            <button class="open-btn" onclick="openInvitation()">
+                <span class="btn-icon">🌸</span>
+                Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Open Invitation Function
+        function openInvitation() {
+            const container = document.getElementById('coverContainer');
+            container.classList.add('hide');
+
+            setTimeout(() => {
+                // GANTI DENGAN URL HALAMAN UNDANGAN UTAMA ANDA
+                window.location.href = 'undangan.html';
+            }, 700);
+        }
+    </script>
+</body>
+
+</html>

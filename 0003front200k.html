@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Ahmad & Siti</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Quicksand:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle Pattern Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4d4d4' fill-opacity='0.15'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20.5h-2zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Floating Soft Shapes */
+        .shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(156, 163, 175, 0.08) 0%, rgba(209, 213, 219, 0.08) 100%);
+            border-radius: 50%;
+            animation: floatShape 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 20%;
+            right: -80px;
+            animation-delay: 3s;
+            animation-duration: 18s;
+        }
+
+        .shape:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            bottom: -80px;
+            left: 10%;
+            animation-delay: 5s;
+            animation-duration: 22s;
+        }
+
+        .shape:nth-child(4) {
+            width: 180px;
+            height: 180px;
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 2s;
+            animation-duration: 16s;
+        }
+
+        @keyframes floatShape {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(20px, -20px) scale(1.05);
+            }
+
+            50% {
+                transform: translate(-10px, 10px) scale(0.95);
+            }
+
+            75% {
+                transform: translate(-20px, -10px) scale(1.02);
+            }
+        }
+
+        /* Soft Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(135deg, #9ca3af, #d1d5db);
+            border-radius: 50%;
+            animation: floatUp 18s infinite;
+            opacity: 0.4;
+        }
+
+        .particle:nth-child(1) {
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            left: 18%;
+            animation-delay: 2s;
+            animation-duration: 16s;
+        }
+
+        .particle:nth-child(3) {
+            left: 28%;
+            animation-delay: 4s;
+            animation-duration: 14s;
+        }
+
+        .particle:nth-child(4) {
+            left: 38%;
+            animation-delay: 1s;
+            animation-duration: 20s;
+        }
+
+        .particle:nth-child(5) {
+            left: 48%;
+            animation-delay: 3s;
+            animation-duration: 17s;
+        }
+
+        .particle:nth-child(6) {
+            left: 58%;
+            animation-delay: 5s;
+            animation-duration: 15s;
+        }
+
+        .particle:nth-child(7) {
+            left: 68%;
+            animation-delay: 2.5s;
+            animation-duration: 19s;
+        }
+
+        .particle:nth-child(8) {
+            left: 78%;
+            animation-delay: 4.5s;
+            animation-duration: 16s;
+        }
+
+        .particle:nth-child(9) {
+            left: 88%;
+            animation-delay: 1.5s;
+            animation-duration: 18s;
+        }
+
+        .particle:nth-child(10) {
+            left: 95%;
+            animation-delay: 3.5s;
+            animation-duration: 14s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.4;
+            }
+
+            90% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .cover-container {
+            text-align: center;
+            z-index: 10;
+            padding: 40px 20px;
+            max-width: 450px;
+        }
+
+        /* Minimalist Card Frame */
+        .frame {
+            padding: 60px 40px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.08),
+                0 10px 30px rgba(0, 0, 0, 0.04),
+                inset 0 1px 1px rgba(255, 255, 255, 0.9);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .frame::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid rgba(156, 163, 175, 0.2);
+            border-radius: 16px;
+            pointer-events: none;
+        }
+
+        /* Decorative Line */
+        .top-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #6b7280, transparent);
+            margin: 0 auto 30px;
+            animation: fadeIn 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        /* Announcement Text */
+        .announcement {
+            color: #9ca3af;
+            font-size: 11px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            animation: fadeInDown 0.8s ease forwards;
+            opacity: 0;
+            font-weight: 500;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Minimalist Icon Container */
+        .icon-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 25px auto;
+            cursor: pointer;
+            animation: fadeIn 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .icon-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 50%;
+            animation: ringPulse 3s infinite ease-in-out;
+        }
+
+        .icon-ring::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(156, 163, 175, 0.5);
+            border-radius: 50%;
+        }
+
+        @keyframes ringPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.7;
+            }
+        }
+
+        .icon-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            color: #6b7280;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-container:hover .icon-symbol {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .icon-container:hover .icon-ring {
+            border-color: #9ca3af;
+        }
+
+        /* Couple Names */
+        .couple-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 300;
+            color: #374151;
+            margin: 30px 0 20px;
+            letter-spacing: 2px;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .couple-names span {
+            color: #9ca3af;
+            font-size: 28px;
+            font-weight: 300;
+            margin: 0 8px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Guest Section */
+        .guest-section {
+            margin: 25px 0;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .guest-label {
+            color: #9ca3af;
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .guest-name {
+            color: #4b5563;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Wedding Date */
+        .wedding-date {
+            color: #6b7280;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 35px;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
+        }
+
+        /* Divider */
+        .divider {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d1d5db, transparent);
+            margin: 30px auto;
+            animation: fadeIn 0.8s ease 0.7s forwards;
+            opacity: 0;
+        }
+
+        /* Minimalist Button */
+        .open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 45px;
+            background: transparent;
+            color: #4b5563;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: 1px solid #d1d5db;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        .open-btn:hover {
+            background: #374151;
+            color: #fff;
+            border-color: #374151;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(55, 65, 81, 0.2);
+        }
+
+        .open-btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-icon {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .open-btn:hover .btn-icon {
+            transform: scale(1.15);
+        }
+
+        /* Corner Minimal Lines */
+        .corner-line {
+            position: fixed;
+            background: linear-gradient(to bottom, rgba(156, 163, 175, 0.3), transparent);
+            z-index: 4;
+        }
+
+        .corner-line.top-left {
+            top: 30px;
+            left: 30px;
+            width: 1px;
+            height: 60px;
+        }
+
+        .corner-line.top-left::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(to right, rgba(156, 163, 175, 0.3), transparent);
+        }
+
+        .corner-line.top-right {
+            top: 30px;
+            right: 30px;
+            width: 1px;
+            height: 60px;
+        }
+
+        .corner-line.top-right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(to left, rgba(156, 163, 175, 0.3), transparent);
+        }
+
+        .corner-line.bottom-left {
+            bottom: 30px;
+            left: 30px;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to top, rgba(156, 163, 175, 0.3), transparent);
+        }
+
+        .corner-line.bottom-left::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(to right, rgba(156, 163, 175, 0.3), transparent);
+        }
+
+        .corner-line.bottom-right {
+            bottom: 30px;
+            right: 30px;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to top, rgba(156, 163, 175, 0.3), transparent);
+        }
+
+        .corner-line.bottom-right::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(to left, rgba(156, 163, 175, 0.3), transparent);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .frame {
+                padding: 50px 25px;
+                margin: 15px;
+            }
+
+            .couple-names {
+                font-size: 38px;
+            }
+
+            .couple-names span {
+                font-size: 24px;
+            }
+
+            .open-btn {
+                padding: 14px 35px;
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+
+            .icon-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .icon-symbol {
+                font-size: 30px;
+            }
+
+            .corner-line {
+                display: none;
+            }
+        }
+
+        /* Page Transition */
+        .cover-container.hide {
+            animation: fadeOut 0.6s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.98);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Shapes -->
+    <div class="shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <!-- Soft Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Corner Lines -->
+    <div class="corner-line top-left"></div>
+    <div class="corner-line top-right"></div>
+    <div class="corner-line bottom-left"></div>
+    <div class="corner-line bottom-right"></div>
+
+    <!-- Main Content -->
+    <div class="cover-container" id="coverContainer">
+        <div class="frame">
+            <!-- Top Line -->
+            <div class="top-line"></div>
+
+            <p class="announcement">The Wedding Of</p>
+
+            <!-- Minimalist Icon -->
+            <div class="icon-container" onclick="openInvitation()">
+                <div class="icon-ring"></div>
+                <span class="icon-symbol">💍</span>
+            </div>
+
+            <!-- Couple Names -->
+            <h1 class="couple-names">
+                Ahmad <span>&</span> Siti
+            </h1>
+
+            <!-- Guest Section -->
+            <div class="guest-section">
+                <p class="guest-label">Kepada Yth.</p>
+                <p class="guest-name">Bapak/Ibu/Saudara/i</p>
+            </div>
+
+            <p class="wedding-date">Sabtu, 15 Februari 2025</p>
+
+            <div class="divider"></div>
+
+            <!-- Open Button -->
+            <button class="open-btn" onclick="openInvitation()">
+                <span class="btn-icon">✉</span>
+                Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Open Invitation Function
+        function openInvitation() {
+            const container = document.getElementById('coverContainer');
+            container.classList.add('hide');
+
+            setTimeout(() => {
+                // GANTI DENGAN URL HALAMAN UNDANGAN UTAMA ANDA
+                window.location.href = 'undangan.html';
+            }, 600);
+        }
+    </script>
+</body>
+
+</html>

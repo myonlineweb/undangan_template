@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Ahmad & Siti</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Josefin+Sans:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fef5f5 0%, #fce4ec 50%, #fff0f3 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Soft Pattern Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e91e63' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Floating Hearts */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: #f48fb1;
+            font-size: 16px;
+            opacity: 0.5;
+            animation: floatHeart 18s linear infinite;
+        }
+
+        .heart:nth-child(1) {
+            left: 5%;
+            animation-delay: 0s;
+            font-size: 18px;
+        }
+
+        .heart:nth-child(2) {
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(3) {
+            left: 25%;
+            animation-delay: 4s;
+            font-size: 20px;
+        }
+
+        .heart:nth-child(4) {
+            left: 35%;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(5) {
+            left: 45%;
+            animation-delay: 3s;
+            font-size: 18px;
+        }
+
+        .heart:nth-child(6) {
+            left: 55%;
+            animation-delay: 5s;
+        }
+
+        .heart:nth-child(7) {
+            left: 65%;
+            animation-delay: 2.5s;
+            font-size: 20px;
+        }
+
+        .heart:nth-child(8) {
+            left: 75%;
+            animation-delay: 4.5s;
+        }
+
+        .heart:nth-child(9) {
+            left: 85%;
+            animation-delay: 1.5s;
+            font-size: 18px;
+        }
+
+        .heart:nth-child(10) {
+            left: 92%;
+            animation-delay: 3.5s;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateY(50vh) rotate(15deg) scale(1.1);
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-50px) rotate(-15deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Soft Circles Background */
+        .circles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(244, 143, 177, 0.08) 0%, rgba(248, 187, 208, 0.05) 100%);
+        }
+
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+            animation: floatCircle 20s infinite ease-in-out;
+        }
+
+        .circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: -80px;
+            left: -80px;
+            animation: floatCircle 18s infinite ease-in-out 3s;
+        }
+
+        .circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            left: -60px;
+            animation: floatCircle 22s infinite ease-in-out 5s;
+        }
+
+        @keyframes floatCircle {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(15px, -15px);
+            }
+
+            50% {
+                transform: translate(-10px, 10px);
+            }
+
+            75% {
+                transform: translate(-15px, -10px);
+            }
+        }
+
+        /* Main Container */
+        .cover-container {
+            text-align: center;
+            z-index: 10;
+            padding: 40px 20px;
+            max-width: 450px;
+        }
+
+        /* Romantic Frame */
+        .frame {
+            padding: 58px 42px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            box-shadow:
+                0 25px 70px rgba(233, 30, 99, 0.08),
+                0 10px 30px rgba(244, 143, 177, 0.06),
+                inset 0 1px 2px rgba(255, 255, 255, 1);
+            position: relative;
+            border: 1px solid rgba(248, 187, 208, 0.3);
+        }
+
+        .frame::before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            border: 1px solid rgba(244, 143, 177, 0.15);
+            border-radius: 22px;
+            pointer-events: none;
+        }
+
+        /* Top Heart Ornament */
+        .top-ornament {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            animation: heartPulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes heartPulse {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.15);
+            }
+        }
+
+        /* Announcement Text */
+        .announcement {
+            color: #ad1457;
+            font-size: 10px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            animation: fadeInDown 0.8s ease forwards;
+            opacity: 0;
+            font-weight: 400;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Icon Container */
+        .icon-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 25px auto;
+            cursor: pointer;
+            animation: fadeIn 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .icon-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(244, 143, 177, 0.4);
+            border-radius: 50%;
+            animation: ringRotate 18s linear infinite;
+        }
+
+        .icon-ring::before,
+        .icon-ring::after {
+            content: '♡';
+            position: absolute;
+            font-size: 12px;
+            color: #f48fb1;
+        }
+
+        .icon-ring::before {
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .icon-ring::after {
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .icon-ring-inner {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 1px dashed rgba(244, 143, 177, 0.25);
+            border-radius: 50%;
+            animation: ringRotate 25s linear infinite reverse;
+        }
+
+        @keyframes ringRotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .icon-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 38px;
+            transition: all 0.3s ease;
+        }
+
+        .icon-container:hover .icon-symbol {
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+
+        .icon-container:hover .icon-ring {
+            border-color: rgba(233, 30, 99, 0.5);
+        }
+
+        /* Couple Names */
+        .couple-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 500;
+            color: #880e4f;
+            margin: 28px 0 18px;
+            letter-spacing: 2px;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .couple-names span {
+            color: #f48fb1;
+            font-size: 28px;
+            font-weight: 400;
+            margin: 0 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Guest Section */
+        .guest-section {
+            margin: 25px 0;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .guest-label {
+            color: #c2185b;
+            font-size: 9px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .guest-name {
+            color: #880e4f;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Wedding Date */
+        .wedding-date {
+            color: #ad1457;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
+            letter-spacing: 1.5px;
+        }
+
+        /* Divider */
+        .divider {
+            width: 140px;
+            height: 30px;
+            margin: 28px auto;
+            position: relative;
+            animation: fadeIn 0.8s ease 0.7s forwards;
+            opacity: 0;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #f48fb1, transparent);
+        }
+
+        .divider::after {
+            content: '♥';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 0 15px;
+            color: #e91e63;
+            font-size: 14px;
+        }
+
+        /* Open Button */
+        .open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 17px 48px;
+            background: linear-gradient(135deg, #ec407a 0%, #f48fb1 50%, #ec407a 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.4s ease;
+            box-shadow:
+                0 12px 35px rgba(233, 30, 99, 0.2),
+                0 5px 15px rgba(244, 143, 177, 0.15);
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        .open-btn:hover {
+            background: linear-gradient(135deg, #d81b60 0%, #ec407a 50%, #d81b60 100%);
+            transform: translateY(-4px);
+            box-shadow:
+                0 18px 45px rgba(233, 30, 99, 0.28),
+                0 8px 20px rgba(244, 143, 177, 0.2);
+        }
+
+        .open-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            font-size: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .frame {
+                padding: 48px 28px;
+                margin: 15px;
+            }
+
+            .couple-names {
+                font-size: 38px;
+            }
+
+            .couple-names span {
+                font-size: 24px;
+            }
+
+            .open-btn {
+                padding: 15px 38px;
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+
+            .icon-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .icon-symbol {
+                font-size: 32px;
+            }
+
+            .top-ornament {
+                font-size: 24px;
+                top: -14px;
+            }
+        }
+
+        /* Page Transition */
+        .cover-container.hide {
+            animation: fadeOut 0.7s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(1.02);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Soft Circles -->
+    <div class="circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Floating Hearts -->
+    <div class="hearts">
+        <div class="heart">♡</div>
+        <div class="heart">♥</div>
+        <div class="heart">♡</div>
+        <div class="heart">♥</div>
+        <div class="heart">♡</div>
+        <div class="heart">♥</div>
+        <div class="heart">♡</div>
+        <div class="heart">♥</div>
+        <div class="heart">♡</div>
+        <div class="heart">♥</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="cover-container" id="coverContainer">
+        <div class="frame">
+            <!-- Top Ornament -->
+            <div class="top-ornament">💕</div>
+
+            <p class="announcement">The Wedding Of</p>
+
+            <!-- Icon -->
+            <div class="icon-container" onclick="openInvitation()">
+                <div class="icon-ring"></div>
+                <div class="icon-ring-inner"></div>
+                <span class="icon-symbol">💗</span>
+            </div>
+
+            <!-- Couple Names -->
+            <h1 class="couple-names">
+                Ahmad <span>&</span> Siti
+            </h1>
+
+            <!-- Guest Section -->
+            <div class="guest-section">
+                <p class="guest-label">Kepada Yth.</p>
+                <p class="guest-name">Bapak/Ibu/Saudara/i</p>
+            </div>
+
+            <p class="wedding-date">Sabtu, 15 Februari 2025</p>
+
+            <div class="divider"></div>
+
+            <!-- Open Button -->
+            <button class="open-btn" onclick="openInvitation()">
+                <span class="btn-icon">💌</span>
+                Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Open Invitation Function
+        function openInvitation() {
+            const container = document.getElementById('coverContainer');
+            container.classList.add('hide');
+
+            setTimeout(() => {
+                // GANTI DENGAN URL HALAMAN UNDANGAN UTAMA ANDA
+                window.location.href = 'undangan.html';
+            }, 700);
+        }
+    </script>
+</body>
+
+</html>

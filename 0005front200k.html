@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Ahmad & Siti</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2744 0%, #0f1829 50%, #1a2744 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Diamond Pattern Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.04'%3E%3Cpath d='M30 0L60 30L30 60L0 30z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Floating Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            color: #d4af37;
+            font-size: 12px;
+            opacity: 0.5;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+
+        .star:nth-child(1) {
+            top: 8%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            top: 15%;
+            right: 15%;
+            animation-delay: 0.5s;
+            font-size: 16px;
+        }
+
+        .star:nth-child(3) {
+            top: 35%;
+            left: 5%;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(4) {
+            top: 25%;
+            right: 8%;
+            animation-delay: 1.5s;
+            font-size: 14px;
+        }
+
+        .star:nth-child(5) {
+            top: 50%;
+            left: 8%;
+            animation-delay: 2s;
+        }
+
+        .star:nth-child(6) {
+            top: 45%;
+            right: 10%;
+            animation-delay: 0.8s;
+            font-size: 16px;
+        }
+
+        .star:nth-child(7) {
+            top: 70%;
+            left: 12%;
+            animation-delay: 1.2s;
+        }
+
+        .star:nth-child(8) {
+            top: 65%;
+            right: 12%;
+            animation-delay: 1.8s;
+            font-size: 14px;
+        }
+
+        .star:nth-child(9) {
+            top: 85%;
+            left: 15%;
+            animation-delay: 0.3s;
+        }
+
+        .star:nth-child(10) {
+            top: 80%;
+            right: 18%;
+            animation-delay: 2.2s;
+            font-size: 16px;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(212, 175, 55, 0.4);
+            border-radius: 50%;
+            animation: floatUp 18s linear infinite;
+        }
+
+        .particle:nth-child(1) {
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            left: 20%;
+            animation-delay: 3s;
+            width: 5px;
+            height: 5px;
+        }
+
+        .particle:nth-child(3) {
+            left: 35%;
+            animation-delay: 6s;
+        }
+
+        .particle:nth-child(4) {
+            left: 50%;
+            animation-delay: 2s;
+            width: 6px;
+            height: 6px;
+        }
+
+        .particle:nth-child(5) {
+            left: 65%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(6) {
+            left: 80%;
+            animation-delay: 8s;
+            width: 5px;
+            height: 5px;
+        }
+
+        .particle:nth-child(7) {
+            left: 92%;
+            animation-delay: 5s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+        }
+
+        /* Corner Decorations */
+        .corner {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .corner::before,
+        .corner::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(to right, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        .corner.top-left {
+            top: 25px;
+            left: 25px;
+        }
+
+        .corner.top-left::before {
+            width: 60px;
+            height: 1px;
+            top: 0;
+            left: 0;
+        }
+
+        .corner.top-left::after {
+            width: 1px;
+            height: 60px;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to bottom, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        .corner.bottom-right {
+            bottom: 25px;
+            right: 25px;
+        }
+
+        .corner.bottom-right::before {
+            width: 60px;
+            height: 1px;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(to left, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        .corner.bottom-right::after {
+            width: 1px;
+            height: 60px;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        /* Main Container */
+        .cover-container {
+            text-align: center;
+            z-index: 10;
+            padding: 40px 20px;
+            max-width: 460px;
+        }
+
+        /* Luxury Frame */
+        .frame {
+            padding: 60px 40px;
+            border-radius: 20px;
+            background: rgba(26, 39, 68, 0.4);
+            backdrop-filter: blur(20px);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(212, 175, 55, 0.1);
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .frame::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            border-radius: 14px;
+            pointer-events: none;
+        }
+
+        /* Top Star Ornament */
+        .top-ornament {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: glowPulse 3s infinite ease-in-out;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            }
+
+            50% {
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+            }
+        }
+
+        /* Announcement Text */
+        .announcement {
+            color: #d4af37;
+            font-family: 'Cinzel', serif;
+            font-size: 9px;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Icon Container */
+        .icon-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 25px auto;
+            cursor: pointer;
+            animation: fadeIn 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .icon-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 50%;
+            animation: ringRotate 20s linear infinite;
+        }
+
+        .icon-ring::before {
+            content: '✦';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #d4af37;
+        }
+
+        .icon-ring-inner {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 1px dashed rgba(212, 175, 55, 0.25);
+            border-radius: 50%;
+            animation: ringRotate 30s linear infinite reverse;
+        }
+
+        @keyframes ringRotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .icon-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: #d4af37;
+            text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .icon-container:hover .icon-symbol {
+            transform: translate(-50%, -50%) scale(1.12);
+            text-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
+        }
+
+        .icon-container:hover .icon-ring {
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+
+        /* Couple Names */
+        .couple-names {
+            font-family: 'Cinzel', serif;
+            font-size: 46px;
+            font-weight: 400;
+            color: #ffffff;
+            margin: 28px 0 18px;
+            letter-spacing: 4px;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .couple-names span {
+            color: #d4af37;
+            font-size: 28px;
+            font-weight: 400;
+            margin: 0 12px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Guest Section */
+        .guest-section {
+            margin: 28px 0;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .guest-label {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 9px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .guest-name {
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Wedding Date */
+        .wedding-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 35px;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
+            letter-spacing: 2px;
+        }
+
+        /* Divider */
+        .divider {
+            width: 150px;
+            height: 30px;
+            margin: 30px auto;
+            position: relative;
+            animation: fadeIn 0.8s ease 0.7s forwards;
+            opacity: 0;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .divider::after {
+            content: '◈';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: transparent;
+            padding: 0 15px;
+            color: #d4af37;
+            font-size: 12px;
+        }
+
+        /* Open Button */
+        .open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #d4af37 0%, #e8c967 50%, #d4af37 100%);
+            color: #1a2744;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.4s ease;
+            box-shadow:
+                0 12px 35px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        .open-btn:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 18px 45px rgba(212, 175, 55, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .open-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            font-size: 16px;
+        }
+
+        /* Bottom Text */
+        .bottom-text {
+            margin-top: 35px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 9px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: fadeIn 0.8s ease 0.9s forwards;
+            opacity: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .frame {
+                padding: 50px 28px;
+                margin: 15px;
+            }
+
+            .couple-names {
+                font-size: 36px;
+                letter-spacing: 3px;
+            }
+
+            .couple-names span {
+                font-size: 22px;
+            }
+
+            .open-btn {
+                padding: 16px 38px;
+                font-size: 9px;
+                letter-spacing: 3px;
+            }
+
+            .icon-container {
+                width: 110px;
+                height: 110px;
+            }
+
+            .icon-symbol {
+                font-size: 34px;
+            }
+
+            .corner {
+                display: none;
+            }
+
+            .top-ornament {
+                font-size: 24px;
+                top: -14px;
+            }
+        }
+
+        /* Page Transition */
+        .cover-container.hide {
+            animation: fadeOut 0.7s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.96);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Stars -->
+    <div class="stars">
+        <div class="star">✦</div>
+        <div class="star">✧</div>
+        <div class="star">✦</div>
+        <div class="star">✧</div>
+        <div class="star">✦</div>
+        <div class="star">✧</div>
+        <div class="star">✦</div>
+        <div class="star">✧</div>
+        <div class="star">✦</div>
+        <div class="star">✧</div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Corner Decorations -->
+    <div class="corner top-left"></div>
+    <div class="corner bottom-right"></div>
+
+    <!-- Main Content -->
+    <div class="cover-container" id="coverContainer">
+        <div class="frame">
+            <!-- Top Ornament -->
+            <div class="top-ornament">✦</div>
+
+            <p class="announcement">The Wedding Of</p>
+
+            <!-- Icon -->
+            <div class="icon-container" onclick="openInvitation()">
+                <div class="icon-ring"></div>
+                <div class="icon-ring-inner"></div>
+                <span class="icon-symbol">💍</span>
+            </div>
+
+            <!-- Couple Names -->
+            <h1 class="couple-names">
+                Ahmad <span>&</span> Siti
+            </h1>
+
+            <!-- Guest Section -->
+            <div class="guest-section">
+                <p class="guest-label">Kepada Yth.</p>
+                <p class="guest-name">Bapak/Ibu/Saudara/i</p>
+            </div>
+
+            <p class="wedding-date">Sabtu, 15 Februari 2025</p>
+
+            <div class="divider"></div>
+
+            <!-- Open Button -->
+            <button class="open-btn" onclick="openInvitation()">
+                <span class="btn-icon">✉</span>
+                Buka Undangan
+            </button>
+
+            <p class="bottom-text">Scroll to begin</p>
+        </div>
+    </div>
+
+    <script>
+        // Open Invitation Function
+        function openInvitation() {
+            const container = document.getElementById('coverContainer');
+            container.classList.add('hide');
+
+            setTimeout(() => {
+                // GANTI DENGAN URL HALAMAN UNDANGAN UTAMA ANDA
+                window.location.href = 'undangan.html';
+            }, 700);
+        }
+    </script>
+</body>
+
+</html>
